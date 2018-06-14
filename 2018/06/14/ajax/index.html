@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="AJAX: Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）是一种与服务器交换数据的技术，可以在不重新载入整个页面的情况下更新网页的一部分。在此简单介绍jquery中的ajax用法  组成 特点 实例     组成123456789101112131415161718$.ajax(&amp;#123;          type: &apos;post&apos;,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jquery中的ajax用法">
+<meta property="og:url" content="http://Telelily.cn/2018/06/14/ajax/index.html">
+<meta property="og:site_name" content="Telelily tell">
+<meta property="og:description" content="AJAX: Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）是一种与服务器交换数据的技术，可以在不重新载入整个页面的情况下更新网页的一部分。在此简单介绍jquery中的ajax用法  组成 特点 实例     组成123456789101112131415161718$.ajax(&amp;#123;          type: &apos;post&apos;,">
+<meta property="og:image" content="https://github.com/Telelily/image/blob/master/hat.jpg?raw=true">
+<meta property="og:updated_time" content="2018-06-14T04:34:32.945Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jquery中的ajax用法">
+<meta name="twitter:description" content="AJAX: Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）是一种与服务器交换数据的技术，可以在不重新载入整个页面的情况下更新网页的一部分。在此简单介绍jquery中的ajax用法  组成 特点 实例     组成123456789101112131415161718$.ajax(&amp;#123;          type: &apos;post&apos;,">
+<meta name="twitter:image" content="https://github.com/Telelily/image/blob/master/hat.jpg?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://Telelily.cn/2018/06/14/ajax/"/>
+
+
+
+
+
+  <title>jquery中的ajax用法 | Telelily tell</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/Telelily" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Telelily tell</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Telelily.cn/2018/06/14/ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Telelily">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Telelily tell">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jquery中的ajax用法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-14T12:34:07+08:00">
+                2018-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="http://www.runoob.com/ajax/ajax-tutorial.html" target="_blank" rel="noopener">AJAX</a>: Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）是一种与服务器交换数据的技术，可以在不重新载入整个页面的情况下更新网页的一部分。在此简单介绍jquery中的ajax用法</p>
+<ul>
+<li>组成</li>
+<li>特点</li>
+<li>实例  </li>
+</ul>
+<p><img src="https://github.com/Telelily/image/blob/master/hat.jpg?raw=true" width="400"></p>
+<h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">          <span class="built_in">type</span>: <span class="string">'post'</span>,</span><br><span class="line">          url:  <span class="string">'/AcademyKeys/addMsg'</span>,</span><br><span class="line">          contentType: <span class="string">'application/x-www-form-urlencoded'</span>,</span><br><span class="line">          dataType: <span class="string">'json'</span>,</span><br><span class="line">          async: <span class="literal">true</span>,</span><br><span class="line">          data: &#123;</span><br><span class="line">              <span class="string">"value"</span>: $(<span class="string">'#addzd'</span>).val(),</span><br><span class="line">              <span class="string">"necessary"</span>: $(<span class="string">'input:radio:checked'</span>).val(),</span><br><span class="line">              <span class="string">"flag"</span>: flag,</span><br><span class="line">          &#125;,</span><br><span class="line">          success: <span class="keyword">function</span>(data) &#123;</span><br><span class="line">              firstshow();</span><br><span class="line">          &#125;,</span><br><span class="line">          error:<span class="keyword">function</span>(data) &#123;</span><br><span class="line"></span><br><span class="line">          &#125;;</span><br><span class="line">      &#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>type<br>请求方法(POST或者GET)，默认是GET。GET方法用来请求数据，参数会在URL中发送，请求可以被缓存并保留在浏览器的历史记录中，敏感数据应该避免使用GET请求方法；Post方法请求不会被缓存也不会在浏览器中保留记录表数据长度没有要求，可以处理敏感数据（用户密码等）  </p>
+</blockquote>
+<blockquote>
+<p>url<br>发送请求的地址（默认为当前页面），要求是String类型的参数   </p>
+</blockquote>
+<blockquote>
+<p>contentType<br>内容编码类型。要求为String类型的参数，当发送信息至服务器时，内容编码类型默认为”application/x-www-form-urlencoded”。该默认值适合大多数应用场合  </p>
+</blockquote>
+<blockquote>
+<p>dataType<br>预期服务器返回的数据类型,可用的类型如下：<br>xml：返回XML文档，可用JQuery处理。<br>html：返回纯文本HTML信息；包含的script标签会在插入DOM时执行。<br>script：返回纯文本JavaScript代码。不会自动缓存结果。除非设置了cache参数。注意在远程请求时（不在同一个域下），所有post请求都将转为get请求。<br>json：返回JSON数据。<br>jsonp：JSONP格式。使用SONP形式调用函数时，例如myurl?callback=?，JQuery将自动替换后一个“?”为正确的函数名，以执行回调函数。<br>text：返回纯文本字符串。  </p>
+</blockquote>
+<blockquote>
+<p>async<br>默认值为true，所有请求是异步，要求是Bool类型的参数，如果需要发送同步请求，将此项设置为false。注意：同步时浏览器会被锁住。    </p>
+</blockquote>
+<blockquote>
+<p>data<br>发送到服务器的数据，要求是Object或string类型的参数。  </p>
+</blockquote>
+<blockquote>
+<p>success<br>请求成功后调用的回调函数,要求为Function类型的参数<br>error<br>请求失败时被调用的函数</p>
+</blockquote>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>优点：</p>
+<ul>
+<li>最大的优点就是页面无需刷新，在页面内与服务器通信，非常好的用户体验。 </li>
+<li>使用异步的方式与服务器通信，不需要中断操作。 </li>
+<li>可以把以前服务器负担的工作转嫁给客户端，减轻服务器和带宽，可以最大程度减少冗余请求。 </li>
+<li>基于标准化的并被广泛支持的技术，不需要下载插件或者小程序。</li>
+</ul>
+<p>不足:  </p>
+<ul>
+<li>AJAX干掉了Back和History功能，即对浏览器机制的破坏。<br>在动态更新页面的情况下，用户无法回到前一个页面状态，因为浏览器仅能记忆历史记录中的静态页面。一个被完整读入的页面与一个已经被动态修改过的页面之间的差别非常微妙；用户通常会希望单击后退按钮能够取消他们的前一次操作，但是在Ajax应用程序中，这将无法实现。 </li>
+<li>安全问题技术同时也对IT企业带来了新的安全威胁，ajax技术就如同对企业数据建立了一个直接通道。这使得开发者在不经意间会暴露比以前更多的数据和服务器逻辑。ajax的逻辑可以对客户端的安全扫描技术隐藏起来，允许黑客从远端服务器上建立新的攻击。还有ajax也难以避免一些已知的安全弱点，诸如跨站点脚步攻击、SQL注入攻击和基于credentials的安全漏洞等。 </li>
+<li>对搜索引擎的支持比较弱。如果使用不当，AJAX会增大网络数据的流量，从而降低整个系统的性能。</li>
+</ul>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"> $(<span class="string">'#showall'</span>).click(<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            <span class="built_in">type</span>: <span class="string">'post'</span>,</span><br><span class="line">            url: Path + <span class="string">'/AcademyKeys/getAllMsg'</span>,</span><br><span class="line">            contentType: <span class="string">'application/x-www-form-urlencoded'</span>,</span><br><span class="line">            dataType: <span class="string">'json'</span>,</span><br><span class="line">            async: <span class="literal">false</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">                <span class="string">"flag"</span>: flag,</span><br><span class="line">            &#125;,</span><br><span class="line">            success: <span class="keyword">function</span>(result) &#123;</span><br><span class="line">                $(<span class="string">'#ztable'</span>).html(<span class="string">""</span>);</span><br><span class="line">                var str = $(<span class="string">'#ztable'</span>).html();</span><br><span class="line">                <span class="keyword">for</span> (var i = 0; i &lt; result.data.length; i++) &#123;</span><br><span class="line">                    var ids = result.data[i].id;</span><br><span class="line">                    str += <span class="string">'&lt;tr&gt;'</span>;</span><br><span class="line">                    str += <span class="string">'&lt;th&gt;'</span> + <span class="string">'&lt;label&gt;'</span> + <span class="string">'&lt;input type="checkbox" name="che" value='</span> + ids + <span class="string">' /&gt;'</span> + <span class="string">'&lt;span class="sp"&gt;'</span> + result.data[i].value + <span class="string">'&lt;/span&gt;'</span> + <span class="string">'&lt;/label&gt;'</span> + <span class="string">'&lt;/th&gt;'</span>;</span><br><span class="line">                    str += <span class="string">'&lt;/tr&gt;'</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                $(<span class="string">'#ztable'</span>).html(str);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">```  </span><br><span class="line">	</span><br><span class="line"> $(<span class="string">'#ztable'</span>).html(<span class="string">""</span>),是要先清空数据，以防每点击一次就重复重现一次  </span><br><span class="line"> \&lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> name=<span class="string">"che"</span> value=<span class="string">' + ids + '</span> /&gt;给checkbox动态拼接value使得每个checkbox都有id    </span><br><span class="line"> ```bash</span><br><span class="line"></span><br><span class="line">    $(<span class="string">'#deletezd'</span>).click(<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        var checkbox = document.getElementsByName(<span class="string">"che"</span>);</span><br><span class="line">        var id = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (var i = 0; i &lt; checkbox.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (checkbox[i].checked) &#123;</span><br><span class="line">                id = id + checkbox[i].value +<span class="string">","</span> ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            <span class="built_in">type</span>: <span class="string">'post'</span>,</span><br><span class="line">            url: Path + <span class="string">'/AcademyKeys/deleteMsg'</span>,</span><br><span class="line">            contentType: <span class="string">'application/x-www-form-urlencoded'</span>,</span><br><span class="line">            dataType: <span class="string">'json'</span>,</span><br><span class="line">            async: <span class="literal">false</span>,</span><br><span class="line">            data: &#123;</span><br><span class="line">                <span class="string">"flag"</span>: flag,</span><br><span class="line">                <span class="string">"id"</span>: id,</span><br><span class="line">            &#125;,</span><br><span class="line">             success: <span class="keyword">function</span>(data) &#123;</span><br><span class="line">                firstshow();</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>删除操作。把上面checkbox[i].value赋给id  </p>
+<pre><code class="bash">$(<span class="string">'#editzd'</span>).click(<span class="function"><span class="title">function</span></span>() {
+
+        <span class="keyword">function</span> ShowElement(element) {
+            var oldhtml = element.innerHTML;
+            var newobj = document.createElement(<span class="string">'input'</span>);
+            newobj.type = <span class="string">'text'</span>;
+            newobj.value = oldhtml;
+            newobj.onblur = <span class="function"><span class="title">function</span></span>() {
+                element.innerHTML = this.value == oldhtml ? oldhtml : this.value;
+            };
+            element.innerHTML = <span class="string">''</span>;
+            element.appendChild(newobj);
+            newobj.select();
+            newobj.focus();
+        }
+
+        var checkbox = document.getElementsByName(<span class="string">"che"</span>);
+        var span = $(<span class="string">".sp"</span>);
+        var id = <span class="string">""</span>;
+        var xzd = <span class="string">""</span>;
+        <span class="keyword">for</span> (var i = 0; i &lt; checkbox.length; i++) {
+            <span class="keyword">if</span> (checkbox[i].checked) {
+                id = id + checkbox[i].value;
+                ShowElement(span[i]);
+                console.log(span[i].innerHTML);
+                xzd = xzd + span[i];
+            }
+        }
+
+        $(<span class="string">'#surezd'</span>).click(<span class="function"><span class="title">function</span></span>() {
+            var checkbox = document.getElementsByName(<span class="string">"che"</span>);
+            var span = $(<span class="string">".sp"</span>);
+            var xzd = <span class="string">""</span>;
+            <span class="keyword">for</span> (var i = 0; i &lt; checkbox.length; i++) {
+                <span class="keyword">if</span> (checkbox[i].checked) {
+                    console.log(span[i].innerHTML);
+                    xzd = xzd + span[i].innerText;
+                }
+            }
+            $.ajax({
+                <span class="built_in">type</span>: <span class="string">'post'</span>,
+                url: Path + <span class="string">'/AcademyKeys/updateMsg'</span>,
+                contentType: <span class="string">'application/x-www-form-urlencoded'</span>,
+                dataType: <span class="string">'json'</span>,
+                async: <span class="literal">false</span>,
+                data: {
+                    <span class="string">"flag"</span>: flag,
+                    <span class="string">"id"</span>: id,
+                    <span class="string">"value"</span>: xzd,
+                    <span class="string">"necessary"</span>: $(<span class="string">'input:radio:checked'</span>).val(),
+                },
+                 success: <span class="keyword">function</span>(data) {
+                firstshow();
+            },
+            });
+        });
+    });
+</code></pre>
+<p>编辑更新字段并传给后台。注意不是按编辑按钮了就直接把ajax传给后台了，得编辑完按确定键后才传过去。  </p>
+<pre><code class="bash"> $.ajax({
+        <span class="built_in">type</span>: <span class="string">'post'</span>,
+        url: Path + <span class="string">'/AcademyKeys/getAllMsg'</span>,
+        contentType: <span class="string">'application/x-www-form-urlencoded'</span>,
+        dataType: <span class="string">'json'</span>,
+        async: <span class="literal">false</span>,
+        data: {
+            <span class="string">"flag"</span>: flag,
+        },
+        success: <span class="keyword">function</span>(result) {
+          $(<span class="string">"#zdtr th:gt(0)"</span>).remove();
+          $(<span class="string">'#select'</span>).html(<span class="string">""</span>);
+          zdlength=result.data;
+          var str1 = <span class="string">''</span>;
+          var str2 = <span class="string">''</span>;
+          <span class="keyword">for</span> (var i = 0; i &lt; result.data.length; i++) {
+            var opids = result.data[i].id;
+            str1 += <span class="string">'&lt;th&gt;'</span> + result.data[i].value + <span class="string">'&lt;/th&gt;'</span>;
+            str2 += <span class="string">'&lt;option value='</span> + opids + <span class="string">' name="opt" &gt;'</span> + result.data[i].value + <span class="string">'&lt;/option&gt;'</span>;
+        }
+        $(<span class="string">'#zdtr'</span>).append(str1);
+        $(<span class="string">'#select'</span>).append(str2);
+    }
+});
+</code></pre>
+<p>$(“th:gt(h)”) 表示选择前 1个之后的所有 <th> 元素。这样每次清空就不会影响已经写在页面上的数据</th></p>
+<p>参考链接<br>[1]:<a href="http://www.runoob.com/ajax/ajax-tutorial.html" target="_blank" rel="noopener">http://www.runoob.com/ajax/ajax-tutorial.html</a><br>[2]:<a href="https://www.jianshu.com/p/ebd031f4e9f6" target="_blank" rel="noopener">https://www.jianshu.com/p/ebd031f4e9f6</a></p>
+
+      
+    </div>
+    
+    
+    
+
+   <div>
+      
+        
+      
+</div>
+
+    
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/13/json/" rel="next" title="Json基本用法">
+                <i class="fa fa-chevron-left"></i> Json基本用法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Telelily</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.jq-school.com/api/index.html" title="API" target="_blank">API</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#组成"><span class="nav-number">1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">3.</span> <span class="nav-text">实例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Telelily</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
